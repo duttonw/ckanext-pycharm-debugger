@@ -1,0 +1,23 @@
+{
+  "name": "ckanext-pycharm-debugger",
+  "version": "1.0.0",
+  "description": "CKAN: The Open Source Data Portal Software ==========================================",
+  "dependencies": {},
+  "devDependencies": {
+    "pyright": "^1.1.392"
+  },
+  "scripts": {
+    "test": "pyright"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duttonw/ckanext-pycharm-debugger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duttonw/ckanext-pycharm-debugger/issues"
+  },
+  "homepage": "https://github.com/duttonw/ckanext-pycharm-debugger"
+}
