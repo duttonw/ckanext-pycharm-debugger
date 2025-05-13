@@ -48,6 +48,7 @@ jobs:
         run: | 
           pip list
           pip install -r ckan/requirements.txt -r ckan/dev-requirements.txt ckan/.
+          pip install -e".[pycharm2025]"
           pip install -e".[test]"
 
       - name: Install node deps

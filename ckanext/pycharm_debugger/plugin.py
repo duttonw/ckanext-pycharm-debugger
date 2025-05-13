@@ -24,6 +24,7 @@ class PycharmDebugger(p.SingletonPlugin):
         # If we have an egg directory, add the egg to the system path
         # If not set, user is expected to have made pycharm egg findable
         if egg_dir and egg_file:
+            log.info("Initiating supplied egg path: %s  file: %s", egg_dir, egg_file)
             sys.path.append(os.path.join(egg_dir, egg_file))
 
         debug = asbool(config.get('debug.remote', 'False'))
@@ -42,9 +43,12 @@ class PycharmDebugger(p.SingletonPlugin):
                                         stdoutToServer=stdout,
                                         stderrToServer=stderr,
                                         suspend=suspend)
-            except NameError or ImportError:
-                log.warning("debug.enabled set to True, but pydevd_pycharm is missing.")
-            except SystemExit or ConnectionRefusedError:
+            except (SystemExit, ConnectionRefusedError):
                 log.warning("Failed to connect to debug server; is it started?")
+
+            except (Exception):
+                # Catch all other exceptions
+                log.warning("debug.enabled set to True, but pydevd_pycharm is missing.")
+
         else:
             log.info("PyCharm Debugger not enabled")

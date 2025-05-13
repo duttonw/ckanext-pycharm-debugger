@@ -1,6 +1,6 @@
 version: 1
 groups:
-    - annotation: selfinfo configuration
+    - annotation: pycharm debugger configuration
       options:
           - key: debug.remote.egg_dir
             type: str

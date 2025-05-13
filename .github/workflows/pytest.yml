@@ -51,6 +51,7 @@ jobs:
       # Install any extra requirements your extension has here (dev requirements, other extensions etc)
       run: |
         apt install git
+        pip install -e ".[pycharm2025]"
         pip install -e ".[test]"
       # .[test] will install base dependencies as well as the test optional group
 
@@ -66,7 +67,7 @@ jobs:
     - name: ${{ matrix.experimental && '**Fail_Ignored** ' || '' }} Run tests
       continue-on-error: ${{ matrix.experimental }}
       run: |
-        pytest --ckan-ini=test.ini --cov=ckanext.selfinfo ckanext/selfinfo --cov-branch --cov-report=xml --junit-xml=./results/junit_results.xml -o junit_family=legacy
+        pytest --ckan-ini=test.ini --cov=ckanext.pycharm_debugger ckanext/pycharm_debugger --cov-branch --cov-report=xml --junit-xml=./results/junit_results.xml -o junit_family=legacy
 
     - name: Generate Test results artifacts
       continue-on-error: ${{ matrix.experimental }}
