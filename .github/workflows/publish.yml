@@ -29,8 +29,14 @@ on:
         default: true
 
 
+permissions:
+  contents: read
+  pages: write
+  actions: read
+  id-token: write
 
 jobs:
+
 
   validateVersion:
     runs-on: ubuntu-latest
@@ -57,6 +63,7 @@ jobs:
     needs: validateVersion
     name: Test
     uses: ./.github/workflows/test.yml # Call the reusable workflow
+    secrets: inherit
 
   publishSkipped:
     if: github.repository != 'duttonw/ckanext-pycharm-debugger'
